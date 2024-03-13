@@ -424,8 +424,8 @@ export default function Dropzone() {
         handleExitHover();
         toast({
           variant: 'destructive',
-          title: { errorUploadingLabel },
-          description: { allowedFilesLabel },
+          title: `${errorUploadingLabel}`,
+          description: `${allowedFilesLabel}`,
           duration: 5000,
         });
       }}
@@ -433,8 +433,8 @@ export default function Dropzone() {
         handleExitHover();
         toast({
           variant: 'destructive',
-          title: { errorUploadingLabel },
-          description: { allowedFilesLabel },
+          title: `${errorUploadingLabel}`,
+          description: `${allowedFilesLabel}`,
           duration: 5000,
         });
       }}
