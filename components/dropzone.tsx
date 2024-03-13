@@ -70,19 +70,19 @@ const extensions = {
 export default function Dropzone() {
 
   const params = typeof window !== 'undefined' && queryString.parse(window.location.search); 
-  const errorMessage = params.errorMessage || 'Error Converting File'; 
-  const audioLabel = params.audioLabel || 'Audio';
-  const clickOrDropLabel = params.clickOrDropLabel || 'Click, or drop your files here'; 
-  const convertAnotherLabel = params.convertAnotherLabel || 'Convert Another File(s)';
-  const convertNowLabel = params.convertNowLabel || 'Convert Now'; 
-  const convertToLabel = params.convertToLabel || 'Convert to';
-  const convertingLabel = params.convertingLabel || 'Converting'; 
-  const doneLabel = params.doneLabel || 'Done';
-  const downloadLabel = params.downloadLabel || 'Download'; 
-  const videoLabel = params.videoLabel || 'Video';
-  const yesRightThereLabel = params.yesRightThereLabel || 'Yes, right there'; 
-  const allowedFilesLabel = params.allowedFilesLabel || 'Allowed Files: Audio, Video and Images';
-  const errorUploadingLabel = params.errorUploadingLabel || 'Error uploading your file(s)'; 
+  const errorMessage = params?.errorMessage ?? 'Error Converting File';
+  const audioLabel = params?.audioLabel ?? 'Audio';
+  const clickOrDropLabel = params?.clickOrDropLabel ?? 'Click, or drop your files here'; 
+  const convertAnotherLabel = params?.convertAnotherLabel ?? 'Convert Another File(s)';
+  const convertNowLabel = params?.convertNowLabel ?? 'Convert Now'; 
+  const convertToLabel = params?.convertToLabel ?? 'Convert to';
+  const convertingLabel = params?.convertingLabel ?? 'Converting'; 
+  const doneLabel = params?.doneLabel ?? 'Done';
+  const downloadLabel = params?.downloadLabel ?? 'Download'; 
+  const videoLabel = params?.videoLabel ?? 'Video';
+  const yesRightThereLabel = params?.yesRightThereLabel ?? 'Yes, right there'; 
+  const allowedFilesLabel = params?.allowedFilesLabel ?? 'Allowed Files: Audio, Video and Images';
+  const errorUploadingLabel = params?.errorUploadingLabel ?? 'Error uploading your file(s)'; 
   console.log(params);
 
   // variables & hooks
