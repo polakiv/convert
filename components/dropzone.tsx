@@ -69,7 +69,7 @@ const extensions = {
 
 export default function Dropzone() {
 
-  const params = queryString.parse(window.location.search); 
+  const params = typeof window !== 'undefined' && queryString.parse(window.location.search); 
   const errorMessage = params.errorMessage || 'Error Converting File'; 
   const audioLabel = params.audioLabel || 'Audio';
   const clickOrDropLabel = params.clickOrDropLabel || 'Click, or drop your files here'; 
