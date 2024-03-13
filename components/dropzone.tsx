@@ -1,8 +1,7 @@
 'use client';
 
 // imports
-import { FiUploadCloud } from 'react-icons/fi';
-
+import { FiUploadCloud } from 'react-icons/fi'; 
 import queryString from 'query-string';
 import { LuFileSymlink } from 'react-icons/lu';
 import { MdClose } from 'react-icons/md';
@@ -70,30 +69,21 @@ const extensions = {
 
 export default function Dropzone() {
 
-  const params = queryString.parse(window.location.search);
-
+  const params = queryString.parse(window.location.search); 
   const errorMessage = params.errorMessage || 'Error Converting File'; 
-
   const audioLabel = params.audioLabel || 'Audio';
-  const clickOrDropLabel = params.clickOrDropLabel || 'Click, or drop your files here2';
-
+  const clickOrDropLabel = params.clickOrDropLabel || 'Click, or drop your files here'; 
   const convertAnotherLabel = params.convertAnotherLabel || 'Convert Another File(s)';
-  const convertNowLabel = params.convertNowLabel || 'Convert Now';
-
+  const convertNowLabel = params.convertNowLabel || 'Convert Now'; 
   const convertToLabel = params.convertToLabel || 'Convert to';
-  const convertingLabel = params.convertingLabel || 'Converting';
-
+  const convertingLabel = params.convertingLabel || 'Converting'; 
   const doneLabel = params.doneLabel || 'Done';
-  const downloadLabel = params.downloadLabel || 'Download';
-
+  const downloadLabel = params.downloadLabel || 'Download'; 
   const videoLabel = params.videoLabel || 'Video';
-  const yesRightThereLabel = params.yesRightThereLabel || 'Yes, right there';
-
-  const allowedFilesLabel  = params.allowedFilesLabel  || 'Allowed Files: Audio, Video and Images';
-  const errorUploadingLabel = params.errorUploadingLabel || 'Error uploading your file(s)';
-
-
-console.log(params)
+  const yesRightThereLabel = params.yesRightThereLabel || 'Yes, right there'; 
+  const allowedFilesLabel = params.allowedFilesLabel || 'Allowed Files: Audio, Video and Images';
+  const errorUploadingLabel = params.errorUploadingLabel || 'Error uploading your file(s)'; 
+  console.log(params);
 
   // variables & hooks
   const { toast } = useToast();
@@ -162,12 +152,12 @@ console.log(params)
         tmp_actions = tmp_actions.map((elt) =>
           elt === action
             ? {
-                ...elt,
-                is_converted: true,
-                is_converting: false,
-                url,
-                output,
-              }
+              ...elt,
+              is_converted: true,
+              is_converting: false,
+              url,
+              output,
+            }
             : elt,
         );
         setActions(tmp_actions);
@@ -175,11 +165,11 @@ console.log(params)
         tmp_actions = tmp_actions.map((elt) =>
           elt === action
             ? {
-                ...elt,
-                is_converted: false,
-                is_converting: false,
-                is_error: true,
-              }
+              ...elt,
+              is_converted: false,
+              is_converting: false,
+              is_error: true,
+            }
             : elt,
         );
         setActions(tmp_actions);
@@ -434,8 +424,8 @@ console.log(params)
         handleExitHover();
         toast({
           variant: 'destructive',
-          title:  {errorUploadingLabel},
-          description: {allowedFilesLabel},
+          title: { errorUploadingLabel },
+          description: { allowedFilesLabel },
           duration: 5000,
         });
       }}
@@ -443,8 +433,8 @@ console.log(params)
         handleExitHover();
         toast({
           variant: 'destructive',
-          title: {errorUploadingLabel},
-          description: {allowedFilesLabel},
+          title: { errorUploadingLabel },
+          description: { allowedFilesLabel },
           duration: 5000,
         });
       }}
