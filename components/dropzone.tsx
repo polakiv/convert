@@ -2,6 +2,8 @@
 
 // imports
 import { FiUploadCloud } from 'react-icons/fi';
+
+import queryString from 'query-string';
 import { LuFileSymlink } from 'react-icons/lu';
 import { MdClose } from 'react-icons/md';
 import ReactDropzone from 'react-dropzone';
@@ -67,6 +69,32 @@ const extensions = {
 };
 
 export default function Dropzone() {
+
+  const params = queryString.parse(window.location.search);
+
+  const errorMessage = params.errorMessage || 'Error Converting File'; 
+
+  const audioLabel = params.audioLabel || 'Audio';
+  const clickOrDropLabel = params.clickOrDropLabel || 'Click, or drop your files here2';
+
+  const convertAnotherLabel = params.convertAnotherLabel || 'Convert Another File(s)';
+  const convertNowLabel = params.convertNowLabel || 'Convert Now';
+
+  const convertToLabel = params.convertToLabel || 'Convert to';
+  const convertingLabel = params.convertingLabel || 'Converting';
+
+  const doneLabel = params.doneLabel || 'Done';
+  const downloadLabel = params.downloadLabel || 'Download';
+
+  const videoLabel = params.videoLabel || 'Video';
+  const yesRightThereLabel = params.yesRightThereLabel || 'Yes, right there';
+
+  const allowedFilesLabel  = params.allowedFilesLabel  || 'Allowed Files: Audio, Video and Images';
+  const errorUploadingLabel = params.errorUploadingLabel || 'Error uploading your file(s)';
+
+
+console.log(params)
+
   // variables & hooks
   const { toast } = useToast();
   const [is_hover, setIsHover] = useState<boolean>(false);
@@ -253,24 +281,24 @@ export default function Dropzone() {
 
             {action.is_error ? (
               <Badge variant="destructive" className="flex gap-2">
-                <span>Error Converting File</span>
+                <span>{errorMessage}</span>
                 <BiError />
               </Badge>
             ) : action.is_converted ? (
               <Badge variant="default" className="flex gap-2 bg-green-500">
-                <span>Done</span>
+                <span>{doneLabel}</span>
                 <MdDone />
               </Badge>
             ) : action.is_converting ? (
               <Badge variant="default" className="flex gap-2">
-                <span>Converting</span>
+                <span>{convertingLabel}</span>
                 <span className="animate-spin">
                   <ImSpinner3 />
                 </span>
               </Badge>
             ) : (
               <div className="text-gray-400 text-md flex items-center gap-4">
-                <span>Convert to</span>
+                <span>{convertToLabel}</span>
                 <Select
                   onValueChange={(value) =>
                     updateAction(action.file_name, value)
@@ -295,10 +323,10 @@ export default function Dropzone() {
                       <Tabs defaultValue="video" className="w-full">
                         <TabsList className="w-full">
                           <TabsTrigger value="video" className="w-full">
-                            Video
+                            {videoLabel}
                           </TabsTrigger>
                           <TabsTrigger value="audio" className="w-full">
-                            Audio
+                            {audioLabel}
                           </TabsTrigger>
                         </TabsList>
                         <TabsContent value="video">
@@ -343,7 +371,7 @@ export default function Dropzone() {
 
             {action.is_converted ? (
               <Button variant="outline" onClick={() => download(action)}>
-                Download
+                {downloadLabel}
               </Button>
             ) : (
               <span
@@ -372,7 +400,7 @@ export default function Dropzone() {
                 variant="outline"
                 className="rounded-xl"
               >
-                Convert Another File(s)
+                {convertAnotherLabel}
               </Button>
             </div>
           ) : (
@@ -387,7 +415,7 @@ export default function Dropzone() {
                   <ImSpinner3 />
                 </span>
               ) : (
-                <span>Convert Now</span>
+                <span>{convertNowLabel}</span>
               )}
             </Button>
           )}
@@ -406,8 +434,8 @@ export default function Dropzone() {
         handleExitHover();
         toast({
           variant: 'destructive',
-          title: 'Error uploading your file(s)',
-          description: 'Allowed Files: Audio, Video and Images.',
+          title:  {errorUploadingLabel},
+          description: {allowedFilesLabel},
           duration: 5000,
         });
       }}
@@ -415,8 +443,8 @@ export default function Dropzone() {
         handleExitHover();
         toast({
           variant: 'destructive',
-          title: 'Error uploading your file(s)',
-          description: 'Allowed Files: Audio, Video and Images.',
+          title: {errorUploadingLabel},
+          description: {allowedFilesLabel},
           duration: 5000,
         });
       }}
@@ -434,7 +462,7 @@ export default function Dropzone() {
                   <LuFileSymlink />
                 </div>
                 <h3 className="text-center font-medium text-2xl">
-                  Yes, right there
+                  {yesRightThereLabel}
                 </h3>
               </>
             ) : (
@@ -443,7 +471,7 @@ export default function Dropzone() {
                   <FiUploadCloud />
                 </div>
                 <h3 className="text-center font-medium text-2xl">
-                  Click, or drop your files here
+                  {clickOrDropLabel}
                 </h3>
               </>
             )}
